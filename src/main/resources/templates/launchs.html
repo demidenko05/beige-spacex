@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Demo project for Spring Boot and https://docs.spacexdata.com/?version=latest</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p><b><a href="/">Home</a></b></p>
+	<h2>Launches</h2>
+    <p>
+	  <table id="rkts" style="text-align: left;">
+	    <thead>
+	      <tr>
+	        <th>flight_number</th>
+	        <th>mission_name</th>
+	        <th>launch_year</th>
+	        <th>rocket</th>
+	        <th>mission_patch</th>
+	        <th>mission_patch_small</th>
+	        <th>reddit_campaign</th>
+	        <th>article_link</th>
+	        <th>wikipedia</th>
+	        <th>youtube_id</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr th:each="lnch : ${launchs}">
+	        <td th:text="${lnch.flight_number}"/>
+	        <td th:text="${lnch.mission_name}"/>
+	        <td th:text="${lnch.launch_year}"/>
+	        <td th:text="${lnch.rocket.nme}"/>
+	        <td th:text="${lnch.links.mission_patch}"/>
+	        <td th:text="${lnch.links.mission_patch_small}"/>
+	        <td th:text="${lnch.links.reddit_campaign}"/>
+	        <td th:text="${lnch.links.article_link}"/>
+	        <td th:text="${lnch.links.wikipedia}"/>
+	        <td th:text="${lnch.links.youtube_id}"/>
+	      </tr>
+	    </tbody>
+	  </table>
+	</p>
+</body>
+</html>

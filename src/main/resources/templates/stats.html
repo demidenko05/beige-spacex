@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Demo project for Spring Boot and https://docs.spacexdata.com/?version=latest</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p><b><a href="/">Home</a></b></p>
+	<h2>Fetching SpaceData statistics</h2>
+    <p>
+	  <table id="rkts" style="text-align: left;">
+	    <thead>
+	      <tr>
+	        <th>Id</th>
+	        <th>Date</th>
+	        <th>URI</th>
+	        <th>Response body</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr th:each="stat : ${stats}">
+	        <td th:text="${stat.iid}"/>
+	        <td th:text="${stat.dat}"/>
+	        <td th:text="${stat.reqUri}"/>
+	        <td th:text="${stat.reqBod}"/>
+	      </tr>
+	    </tbody>
+	  </table>
+	</p>
+</body>
+</html>

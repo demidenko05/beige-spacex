@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Demo project for Spring Boot and https://docs.spacexdata.com/?version=latest</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p><b><a href="/">Home</a></b></p>
+	<h2>List rockets in DB</h2>
+    <p>
+	  <table id="rkts">
+	    <thead>
+	      <tr>
+	        <th>Id</th>
+	        <th>Name</th>
+	        <th>Action</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr th:each="rkt : ${rkts}">
+	        <td th:text="${rkt.iid}"/>
+	        <td th:text="${rkt.nme}"/>
+	        <td><a th:href="@{/launchesJson/__${rkt.iid}__}">Fetch launches</a></td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</p>
+</body>
+</html>
