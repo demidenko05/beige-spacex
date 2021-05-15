@@ -1,8 +1,11 @@
 package org.beigesoft.beigespacex.launche;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -25,6 +28,9 @@ public class LinksJson {
 
 	@Transient
 	private List<String> flickr_images;
+
+	@ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	private List<FlirckrImg> flicImgs  = new ArrayList<>(); 
 
 	public String getMission_patch() {
 		return mission_patch;
@@ -80,5 +86,13 @@ public class LinksJson {
 
 	public void setFlickr_images(List<String> flickr_images) {
 		this.flickr_images = flickr_images;
+	}
+
+	public List<FlirckrImg> getFlicImgs() {
+		return flicImgs;
+	}
+
+	public void setFlicImgs(List<FlirckrImg> flicImgs) {
+		this.flicImgs = flicImgs;
 	}
 }

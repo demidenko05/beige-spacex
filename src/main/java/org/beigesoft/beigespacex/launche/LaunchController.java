@@ -43,6 +43,12 @@ public class LaunchController {
 		LaunchJson[] launchs = this.jsnMpr.readValue(jsnRsp, LaunchJson[].class);
 		Rocket rkt = new Rocket(pRctId);
 	    for (LaunchJson lnch : launchs) {
+	    	if (lnch.getLinks().getFlickr_images() != null
+    			&& lnch.getLinks().getFlickr_images().size() > 0) {
+	    		for (String pth : lnch.getLinks().getFlickr_images()) {
+	    			lnch.getLinks().getFlicImgs().add(new FlirckrImg(pth));
+	    		}
+	    	}
 	    	this.launRepo.save(new Launch(lnch, rkt));
 		}	    
 		pMdl.put("launchs", this.launRepo.findByRocket(rkt));
