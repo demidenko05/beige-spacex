@@ -2,42 +2,52 @@ package org.beigesoft.beigespacex.rocket;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-//import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 public class Rocket {
-	
+
 	@Id
-	private String iid;
+	private String rocket_id;
 
 	//@NotEmpty
-	private String nme;
+	private String rocket_name;
 
 	public Rocket() {
 	}
 
-	public Rocket(String iid) {
-		this.iid = iid;
+	public Rocket(String rocket_id) {
+		this.rocket_id = rocket_id;
 	}
 
-	public Rocket(RocketJson pSrc) {
-		this.iid = pSrc.getRocket_id();
-		this.setNme(pSrc.getRocket_name());
+	public Rocket(String rocket_id, String rocket_name) {
+		this.rocket_id = rocket_id;
+		this.rocket_name = rocket_name;
 	}
 
-	public String getIid() {
-		return iid;
+	@Override
+	public String toString() {
+		return "Rocket{" +
+				"ID='" + this.rocket_id + '\'' +
+				", Name=" + this.rocket_name +
+				'}';
 	}
 
-	public void setIid(String iid) {
-		this.iid = iid;
+	public String getRocket_id() {
+		return rocket_id;
 	}
 
-	public String getNme() {
-		return nme;
+	public void setRocket_id(String rocket_id) {
+		this.rocket_id = rocket_id;
 	}
 
-	public void setNme(String nme) {
-		this.nme = nme;
+	public String getRocket_name() {
+		return rocket_name;
+	}
+
+	public void setRocket_name(String rocket_name) {
+		this.rocket_name = rocket_name;
 	}
 }

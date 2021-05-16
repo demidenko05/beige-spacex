@@ -1,12 +1,15 @@
 package org.beigesoft.beigespacex.launche;
 
-import org.beigesoft.beigespacex.rocket.Rocket;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.beigesoft.beigespacex.rocket.Rocket;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Launch {
 
 	@Id
@@ -19,18 +22,16 @@ public class Launch {
 	@ManyToOne
 	private Rocket rocket;
 
-	private LinksJson links;
+	private Links links;
 
-	public Launch() {
-		
+	public void addFlirckImg (FlirckrImg pFlImg) {
+		this.links.getFlicImgs().add(pFlImg);
+		pFlImg.getLaunchs().add(this);
 	}
 
-	public Launch(LaunchJson pSrc, Rocket pRkt) {
-		this.flight_number = pSrc.getFlight_number();
-		this.mission_name = pSrc.getMission_name();
-		this.launch_year = pSrc.getLaunch_year();
-		this.rocket = pRkt;
-		this.links = pSrc.getLinks();
+	public void remFlirckImg (FlirckrImg pFlImg) {
+		this.links.getFlicImgs().remove(pFlImg);
+		pFlImg.getLaunchs().remove(this);
 	}
 
 	public Integer getFlight_number() {
@@ -65,11 +66,11 @@ public class Launch {
 		this.rocket = rocket;
 	}
 
-	public LinksJson getLinks() {
+	public Links getLinks() {
 		return links;
 	}
 
-	public void setLinks(LinksJson links) {
+	public void setLinks(Links links) {
 		this.links = links;
 	}
 }

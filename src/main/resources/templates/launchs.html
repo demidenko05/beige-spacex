@@ -7,6 +7,9 @@
 <body>
 	<p><b><a href="/">Home</a></b></p>
 	<h2>Launches</h2>
+	<div th:if= "${rkt != null}">
+		For rocket#: <span th:text="${rkt.rocket_id}"/>
+	</div>
     <p>
 	  <table id="rkts" style="text-align: left;">
 	    <thead>
@@ -29,7 +32,7 @@
 	        <td th:text="${lnch.flight_number}"/>
 	        <td th:text="${lnch.mission_name}"/>
 	        <td th:text="${lnch.launch_year}"/>
-	        <td th:text="${lnch.rocket.nme}"/>
+	        <td th:text="${lnch.rocket.rocket_name}"/>
 	        <td>
 	        	<p th:each="fimg : ${lnch.links.flicImgs}">
 	        		<span th:text="${fimg.pth}"/>

@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Embeddable
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class LinksJson {
+public class Links {
 
 	private String mission_patch;
 
