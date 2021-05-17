@@ -3,51 +3,40 @@ package org.beigesoft.beigespacex.rocket;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 public class Rocket {
 
 	@Id
-	private String rocket_id;
+	private String iid;
 
 	//@NotEmpty
-	private String rocket_name;
+	private String nme;
 
 	public Rocket() {
 	}
 
 	public Rocket(String rocket_id) {
-		this.rocket_id = rocket_id;
+		this.iid = rocket_id;
 	}
 
 	public Rocket(String rocket_id, String rocket_name) {
-		this.rocket_id = rocket_id;
-		this.rocket_name = rocket_name;
+		this.iid = rocket_id;
+		this.nme = rocket_name;
 	}
 
-	@Override
-	public String toString() {
-		return "Rocket{" +
-				"ID='" + this.rocket_id + '\'' +
-				", Name=" + this.rocket_name +
-				'}';
+	public String getIid() {
+		return iid;
 	}
 
-	public String getRocket_id() {
-		return rocket_id;
+	public void setIid(String iid) {
+		this.iid = iid;
 	}
 
-	public void setRocket_id(String rocket_id) {
-		this.rocket_id = rocket_id;
+	public String getNme() {
+		return nme;
 	}
 
-	public String getRocket_name() {
-		return rocket_name;
-	}
-
-	public void setRocket_name(String rocket_name) {
-		this.rocket_name = rocket_name;
+	public void setNme(String nme) {
+		this.nme = nme;
 	}
 }

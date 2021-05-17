@@ -6,10 +6,7 @@ import javax.persistence.ManyToOne;
 
 import org.beigesoft.beigespacex.rocket.Rocket;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Launch {
 
 	@Id
@@ -23,6 +20,16 @@ public class Launch {
 	private Rocket rocket;
 
 	private Links links;
+
+	public Launch() {
+	}
+
+	public Launch(Integer flight_number, String mission_name, Integer launch_year, Rocket rocket) {
+		this.flight_number = flight_number;
+		this.mission_name = mission_name;
+		this.launch_year = launch_year;
+		this.rocket = rocket;
+	}
 
 	public void addFlirckImg (FlirckrImg pFlImg) {
 		this.links.getFlicImgs().add(pFlImg);

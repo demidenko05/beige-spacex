@@ -39,9 +39,9 @@ public class RocketService {
 //		RocketJson[] rockets = this.restTmpl.getForObject(ROCKETS_REST_URI, RocketJson[].class);
 		String jsnRsp = this.restTmpl.getForObject(this.rktUri, String.class);
 		this.statRepo.save(new Statst(new Date(), this.rktUri, jsnRsp));
-		Rocket[] rockets = this.jsnMpr.readValue(jsnRsp, Rocket[].class);
-	    for (Rocket rk : rockets) {
-	    	this.rktRepo.save(rk);
+		RocketJson[] rockets = this.jsnMpr.readValue(jsnRsp, RocketJson[].class);
+	    for (RocketJson rk : rockets) {
+	    	this.rktRepo.save(new Rocket(rk.getRocket_id(), rk.getRocket_name()));
 		}	    
 	}
 }

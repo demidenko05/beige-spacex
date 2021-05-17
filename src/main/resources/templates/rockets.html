@@ -18,9 +18,9 @@
 	    </thead>
 	    <tbody>
 	      <tr th:each="rkt : ${rkts}">
-	        <td th:text="${rkt.rocket_id}"/>
-	        <td th:text="${rkt.rocket_name}"/>
-	        <td><a th:href="@{/launchesJson/__${rkt.rocket_id}__}">Fetch launches</a></td>
+	        <td th:text="${rkt.iid}"/>
+	        <td th:text="${rkt.nme}"/>
+	        <td><a th:href="@{/launchesJson/__${rkt.iid}__}">Fetch launches</a></td>
 	      </tr>
 	    </tbody>
 	  </table>

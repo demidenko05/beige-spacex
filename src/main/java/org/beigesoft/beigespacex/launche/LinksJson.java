@@ -1,14 +1,11 @@
 package org.beigesoft.beigespacex.launche;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Embeddable;
-import javax.persistence.ManyToMany;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Embeddable
-public class Links {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class LinksJson {
 
 	private String mission_patch;
 
@@ -22,21 +19,7 @@ public class Links {
 
 	private String wikipedia;
 
-	@ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	private List<FlirckrImg> flicImgs  = new ArrayList<>(); 
-
-	public Links() {
-	}
-
-	public Links(String mission_patch, String mission_patch_small, String reddit_campaign, String article_link,
-			String youtube_id, String wikipedia) {
-		this.mission_patch = mission_patch;
-		this.mission_patch_small = mission_patch_small;
-		this.reddit_campaign = reddit_campaign;
-		this.article_link = article_link;
-		this.youtube_id = youtube_id;
-		this.wikipedia = wikipedia;
-	}
+	private List<String> flickr_images;
 
 	public String getMission_patch() {
 		return mission_patch;
@@ -86,11 +69,11 @@ public class Links {
 		this.wikipedia = wikipedia;
 	}
 
-	public List<FlirckrImg> getFlicImgs() {
-		return flicImgs;
+	public List<String> getFlickr_images() {
+		return flickr_images;
 	}
 
-	public void setFlicImgs(List<FlirckrImg> flicImgs) {
-		this.flicImgs = flicImgs;
+	public void setFlickr_images(List<String> flickr_images) {
+		this.flickr_images = flickr_images;
 	}
 }

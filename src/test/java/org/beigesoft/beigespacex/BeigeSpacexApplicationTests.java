@@ -12,6 +12,7 @@ import org.beigesoft.beigespacex.launche.Links;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional; //single transaction for method plus automatically rollback when test
 
 @SpringBootTest
 class BeigeSpacexApplicationTests {
@@ -23,6 +24,7 @@ class BeigeSpacexApplicationTests {
 	private FlirckImgRepo fimgRepo;
 
 	@Test
+	@Transactional
 	void testSharedMany() {
 		Launch laun1 = new Launch();
 		laun1.setFlight_number(9999991);
@@ -46,9 +48,9 @@ class BeigeSpacexApplicationTests {
 		launRepo.delete(laun2);
 		fimgs = fimgRepo.findAbandoned();
 		assertThat(fimgs).hasSize(3);
-		for (FlirckrImg fimg : fimgs) {
+		/*for (FlirckrImg fimg : fimgs) {
 			fimgRepo.delete(fimg);
-		}
+		}*/
 	}
 
 }
