@@ -34,6 +34,13 @@ public class Launch {
 		pFlImg.getLaunchs().remove(this);
 	}
 
+	public void clearFlirckImgs () {
+		for (FlirckrImg img : this.links.getFlicImgs()) {
+			img.getLaunchs().remove(this);
+		}
+		this.links.getFlicImgs().clear();
+	}
+
 	public Integer getFlight_number() {
 		return flight_number;
 	}
