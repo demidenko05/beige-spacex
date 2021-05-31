@@ -6,6 +6,7 @@ import org.beigesoft.beigespacex.rocket.Rocket;
 import org.beigesoft.beigespacex.stat.StatstRepository;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -27,6 +28,7 @@ public class LaunchController {
 	}
 
 	@GetMapping("/launchesJson/{rktId}")
+	@Transactional
 	public String fetch(@PathVariable("rktId") String pRctId, Map<String, Object> pMdl) throws JsonMappingException, JsonProcessingException {
 		Rocket rkt = this.launSrv.fetchLounches(pRctId);
 		pMdl.put("launchs", this.launRepo.findByRocket(rkt));
@@ -35,6 +37,7 @@ public class LaunchController {
 	}
 
 	@GetMapping("/launches")
+	@Transactional
 	public String listAll(Map<String, Object> pMdl) {
 		pMdl.put("launchs", this.launRepo.findAll());
 		return "launchs";

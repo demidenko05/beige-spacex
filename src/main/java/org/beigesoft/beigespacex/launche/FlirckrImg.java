@@ -1,5 +1,6 @@
 package org.beigesoft.beigespacex.launche;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +28,12 @@ launch_flight_number  	flic_imgs_pth
 */
 
 @Entity
-public class FlirckrImg {
+public class FlirckrImg implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6405424373819062336L;
 
 	@Id
 	private String pth;

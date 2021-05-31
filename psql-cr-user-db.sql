@@ -1,0 +1,2 @@
+CREATE USER spacex WITH PASSWORD 'spacex';
+CREATE DATABASE spacex OWNER spacex;

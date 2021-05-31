@@ -1,5 +1,6 @@
 package org.beigesoft.beigespacex.stat;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -10,8 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 @Entity
-public class Statst {
+public class Statst implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6825835221542051477L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long iid;

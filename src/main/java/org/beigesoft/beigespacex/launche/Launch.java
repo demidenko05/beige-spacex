@@ -1,5 +1,7 @@
 package org.beigesoft.beigespacex.launche;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -7,7 +9,12 @@ import javax.persistence.ManyToOne;
 import org.beigesoft.beigespacex.rocket.Rocket;
 
 @Entity
-public class Launch {
+public class Launch implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5687408059164056152L;
 
 	@Id
 	private Integer flight_number;

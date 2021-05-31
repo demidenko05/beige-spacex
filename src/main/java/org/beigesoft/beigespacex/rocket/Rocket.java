@@ -1,10 +1,17 @@
 package org.beigesoft.beigespacex.rocket;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Rocket {
+public class Rocket implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4002719281238487337L;
 
 	@Id
 	private String iid;
